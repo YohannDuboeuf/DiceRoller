@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'dart:math';
-import 'package:dice_roller/widgets/text_style_widget.dart';
+import './dice_roller.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({super.key});
 
-  rollDice() {
-    Random random = new Random();
-    int randomNumber = random.nextInt(6);
-
-    print(randomNumber);
-  }
-
   @override
   Widget build(BuildContext context) {
-    const testNumber = 3;
-
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -28,26 +18,9 @@ class HomeWidget extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Center(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            "assets/img/dice-" + testNumber.toString() + ".png",
-            width: 200,
-          ),
-          const TextStyleWidget('test'),
-          OutlinedButton(
-            onPressed: rollDice,
-            child: const Text('Lancer le dé'),
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.all(15),
-              foregroundColor: Colors.white,
-              textStyle: const TextStyle(fontSize: 28),
-            ),
-          )
-        ],
-      )),
+      child: const Center(
+        child: DiceRoller(),
+      ),
     );
   }
 }
